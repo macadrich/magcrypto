@@ -18,8 +18,8 @@ func Version() {
 	fmt.Println("Version 1.0.0")
 }
 
-// GenKeyPair private key generation with Curve25519 Diffie-Hellman function
-func GenKeyPair() ([32]byte, [32]byte, error) {
+// GenerateKeyPair private key generation with Curve25519 Diffie-Hellman function
+func GenerateKeyPair() ([32]byte, [32]byte, error) {
 	var pri [32]byte
 	var pub [32]byte
 
@@ -39,8 +39,8 @@ func GenKeyPair() ([32]byte, [32]byte, error) {
 	return pri, pub, nil
 }
 
-// GenSharedSecret shared secret generation with Curve25519 Diffie-Hellman function
-func GenSharedSecret(selfPri, otherPub [32]byte) [32]byte {
+// GenerateSharedKey shared secret generation with Curve25519 Diffie-Hellman function
+func GenerateSharedKey(selfPri, otherPub [32]byte) [32]byte {
 	var secret [32]byte
 	curve25519.ScalarMult(&secret, &selfPri, &otherPub)
 	return secret
